@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Infinity Profile:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Infinity_Profile_jar</output-path>
+    <root id="archive" name="Infinity Profile.jar">
+      <element id="module-output" name="Infinity Profile" />
+    </root>
+  </artifact>
+</component>

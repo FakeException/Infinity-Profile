@@ -1,0 +1,6 @@
+name: InfinityProfile
+version: ${project.version}
+main: me.darkboy.profile.infinityprofile.InfinityProfile
+authors: [zDqrkB0y_]
+description: Profilo Infinity Mine
+website: https://infinity-mine.com
