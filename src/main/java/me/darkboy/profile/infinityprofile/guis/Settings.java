@@ -9,16 +9,17 @@ import me.darkboy.profile.infinityprofile.api.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 
 import java.util.HashSet;
 
-public class Settings implements InventoryProvider {
+public class Settings implements InventoryProvider, Listener {
 
     public static InfinityInventory inv = InfinityInventory.builder()
             .id("settingsGUI")
             .provider(new Settings())
             .size(6, 9)
-            .title("          §bSettings")
+            .title("§bSettings")
             .build();
 
     private HashSet<Player> hide = new HashSet<>();
@@ -58,4 +59,5 @@ public class Settings implements InventoryProvider {
             contents.set()
         }*/
     }
+
 }

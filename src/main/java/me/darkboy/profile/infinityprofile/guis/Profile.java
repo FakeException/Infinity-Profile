@@ -19,7 +19,7 @@ public class Profile extends DataManager implements InventoryProvider {
             .id("profileGUI")
             .size(6, 9)
             .provider(new Profile())
-            .title("          §bYour player §3Profile")
+            .title("§bYour player §3Profile")
             .build();
 
     @Override
