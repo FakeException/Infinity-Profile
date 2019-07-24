@@ -24,17 +24,25 @@ public class Settings implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
         contents.fillBorders(ClickableItem.empty(new ItemBuilder(Material.STAINED_GLASS_PANE).setDisplayName("§7✦ §b§lDream§c§lWars §7✦").build()));
+
+        if (!hide.contains(player)) {
+            hide.add(player);
+        } else {
+            hide.remove(player);
+        }
     }
 
     @Override
     public void update(Player player, InventoryContents contents) {
         contents.set(1, 2, ClickableItem.empty(new ItemBuilder(Material.WATCH).setDisplayName("§aPlayer visibility").build()));
         if(!hide.contains(player)) {
-            contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.INK_SACK, 1, (byte) 8).setDisplayName("§aVisibility Disabled").build()));
-            hide.add(player);
+            contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.INK_SACK, 1, (byte) 8).setDisplayName("§aVisibility Disabled").build(), e -> {
+                hide.add(player);
+            }));
         } else {
-            contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.INK_SACK, 1, (byte) 10).setDisplayName("§aVisibility Enabled").build()));
-            hide.remove(player);
+            contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.INK_SACK, 1, (byte) 10).setDisplayName("§aVisibility Enabled").build(), e -> {
+                hide.remove(player);
+            }));
         }
 
 
