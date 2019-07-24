@@ -1,14 +1,11 @@
 package me.darkboy.profile.infinityprofile.guis;
 
-import me.darkboy.profile.infinityprofile.InfinityProfile;
 import me.darkboy.profile.infinityprofile.api.inventory.ClickableItem;
 import me.darkboy.profile.infinityprofile.api.inventory.InfinityInventory;
 import me.darkboy.profile.infinityprofile.api.inventory.content.InventoryContents;
 import me.darkboy.profile.infinityprofile.api.inventory.content.InventoryProvider;
 import me.darkboy.profile.infinityprofile.api.util.ItemBuilder;
 import me.darkboy.profile.infinityprofile.data.PlayerProfile;
-import me.darkboy.profile.infinityprofile.mysql.MySQLDatabase;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -16,7 +13,7 @@ import org.bukkit.entity.Player;
 
 import java.util.concurrent.TimeUnit;
 
-public class Profile extends MySQLDatabase implements InventoryProvider {
+public class Profile implements InventoryProvider {
 
     public static final InfinityInventory inv = InfinityInventory.builder()
             .id("profileGUI")
@@ -37,12 +34,10 @@ public class Profile extends MySQLDatabase implements InventoryProvider {
 
         long t = (long)((double)player.getStatistic(Statistic.PLAY_ONE_TICK) * 0.05D * 1000.0D);
         long[] time = this.formatDuration(t);
-// Io lo saprei già come mettere il database ma il problema è che come ho detto prima un UPODATE al sercondo per ogni giocatore farebbe laggare di molto il server usaimo asynchronous
-/// buildo? si, proviamo
-        Bukkit.getScheduler().runTaskAsynchronously(InfinityProfile.getInstance(), () -> Update(player, time.toString()));
 
         String message = this.formatMessage(time, player);
         contents.set(1, 4, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§3Online §6Time §e➦", "", message).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
+        contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.REDSTONE_COMPARATOR).setLore("").setDisplayName("§bOpen Settings").build()));
     }
 
     private long[] formatDuration(long millis) {
