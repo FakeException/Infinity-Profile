@@ -16,7 +16,7 @@ public class DataManager {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(link, Username, Password);
             Statement stmt = con.createStatement();
-            String sql = "SELECT rank FROM groups WHERE username='" + p.getName() + "'";
+            String sql = "SELECT * FROM groups WHERE username='" + p.getName() + "'";
             ResultSet rs = stmt.executeQuery(sql);
             if(rs.next()) {
                 return rs.getString(3);
