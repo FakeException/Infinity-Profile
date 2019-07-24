@@ -50,7 +50,7 @@ public enum Config {
     CHECK_AUTOSNEAK("checks.AutoSneak.enabled", true),
     CHECK_AUTOSNEAK_NAME("checks.AutoSneak.check-name", "AutoSneak"),
 
-    KILLAURA_AUTOKICK("settings.KillAura-AutoKick-Beta", false),
+    KILLAURA_AUTOKICK("Settings.KillAura-AutoKick-Beta", false),
 
     CHECKSET_REACH_MAX_DISTANCE("checksettings.Reach.max-distance", 4.4)
 
