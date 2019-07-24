@@ -30,9 +30,9 @@ public class Settings implements InventoryProvider {
     public void update(Player player, InventoryContents contents) {
         contents.set(1, 2, ClickableItem.empty(new ItemBuilder(Material.WATCH).setDisplayName("§aPlayer visibility").build()));
         if(!hide.contains(player)) {
-            contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.INK_SACK, (byte) 10).setDisplayName("§aVisibility Enabled").build()));
+            contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.INK_SACK, 1 ,(byte) 10).setDisplayName("§aVisibility Enabled").build()));
         } else {
-            contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.INK_SACK, (byte) 8).setDisplayName("§aVisibility Disabled").build()));
+            contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.INK_SACK, 1, (byte) 8).setDisplayName("§aVisibility Disabled").build()));
         }
 
 
