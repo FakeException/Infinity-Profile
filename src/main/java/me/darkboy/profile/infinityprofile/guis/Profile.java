@@ -36,8 +36,8 @@ public class Profile implements InventoryProvider {
         long[] time = this.formatDuration(t);
 
         String message = this.formatMessage(time, player);
-        contents.set(1, 4, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§3Online §6Time §e➦", "", message).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
-        contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.REDSTONE_COMPARATOR).setLore("").setDisplayName("§bOpen Settings").build()));
+        contents.set(2, 6, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§3Online §6Time §e➦", "", message).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
+        contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.REDSTONE_COMPARATOR).setLore("").setDisplayName("§bUser preferencer").build()));
     }
 
     private long[] formatDuration(long millis) {
