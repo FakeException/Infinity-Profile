@@ -1,5 +1,6 @@
 package me.darkboy.profile.infinityprofile.guis;
 
+import me.darkboy.profile.infinityprofile.MySQL.DataManager;
 import me.darkboy.profile.infinityprofile.api.inventory.ClickableItem;
 import me.darkboy.profile.infinityprofile.api.inventory.InfinityInventory;
 import me.darkboy.profile.infinityprofile.api.inventory.content.InventoryContents;
@@ -12,7 +13,7 @@ import org.bukkit.entity.Player;
 
 import java.util.concurrent.TimeUnit;
 
-public class Profile implements InventoryProvider {
+public class Profile extends DataManager implements InventoryProvider {
 
     public static final InfinityInventory inv = InfinityInventory.builder()
             .id("profileGUI")
@@ -32,7 +33,7 @@ public class Profile implements InventoryProvider {
         long[] time = this.formatDuration(t);
 
         String message = this.formatMessage(time, player);
-        contents.set(2, 6, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§3Online §6Time §e➦", "", message).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
+        contents.set(2, 6, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§6Time in Game §e➦" + message, "&6Rank §e➦" + getRank(player)).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
         contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.REDSTONE_COMPARATOR).setLore("").setDisplayName("§bUser preferencer").build(), e -> Settings.inv.open(player)));
     }
 
@@ -46,6 +47,6 @@ public class Profile implements InventoryProvider {
     }
 
     private String formatMessage(long[] time, Player player) {
-        return ChatColor.translateAlternateColorCodes('&', "&bDays: &3%d% &bHours: &3%h% &bMinutes: &3%m%".replace("%d%", time[0] + "").replace("%h%", time[1] + "").replace("%m%", time[2] + "").replace("%p%", player.getName()));
+        return ChatColor.translateAlternateColorCodes('&', "&3%d%&bD &3%h%&bH &3%m%&bM".replace("%d%", time[0] + "").replace("%h%", time[1] + "").replace("%m%", time[2] + "").replace("%p%", player.getName()));
     }
 }
