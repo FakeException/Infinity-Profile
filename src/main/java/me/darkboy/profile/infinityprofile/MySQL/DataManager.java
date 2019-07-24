@@ -11,6 +11,7 @@ public class DataManager {
     private static String link = "jdbc:mysql://82.165.125.77:3306/ranks?useSSL=false";
 
     public static String getRank(Player p) {
+        String rank = "";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(link, Username, Password);
@@ -18,12 +19,12 @@ public class DataManager {
             String sql = "SELECT * FROM groups WHERE username='" + p.getName() + "'";
             ResultSet rs = stmt.executeQuery(sql);
             if(rs.next()) {
-                return rs.getString(3);
+                rank = rs.getString(3);
+                con.close();
             }
-            con.close();
         }catch(Exception e) {
             e.printStackTrace();
         }
-        return "§4Rank Error";
+        return rank;
     }
 }

@@ -33,8 +33,8 @@ public class Profile extends DataManager implements InventoryProvider {
         long[] time = this.formatDuration(t);
 
         String message = this.formatMessage(time, player);
-        contents.set(2, 6, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§6Time in Game §e➦" + message, "&6Rank §e➦" + getRank(player)).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
-        contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.REDSTONE_COMPARATOR).setLore("").setDisplayName("§bUser preferencer").build(), e -> Settings.inv.open(player)));
+        contents.set(2, 2, ClickableItem.empty(new ItemBuilder(Material.SKULL_ITEM).setLore("", "§6Time in Game §e➦ " + message, "§6Rank §e➦ " + getRank(player)).setDisplayName("§3" + player.getName()).setSkullOwner(player.getUniqueId()).build()));
+        contents.set(2, 6, ClickableItem.of(new ItemBuilder(Material.REDSTONE_COMPARATOR).setLore("").setDisplayName("§bUser preferencer").build(), e -> Settings.inv.open(player)));
     }
 
     private long[] formatDuration(long millis) {
