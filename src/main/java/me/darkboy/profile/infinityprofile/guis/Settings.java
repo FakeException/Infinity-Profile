@@ -39,7 +39,7 @@ public class Settings implements InventoryProvider {
 
 /*        contents.set(1, 2, ClickableItem.empty(new ItemBuilder(Material.FEATHER).setDisplayName("§aFly").build()));
         if(player.getAllowFlight()) {
-            contents.set()*/
-        }
+            contents.set()
+        }*/
     }
 }
