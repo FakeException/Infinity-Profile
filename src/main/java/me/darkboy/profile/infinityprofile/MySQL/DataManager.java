@@ -11,10 +11,9 @@ public class DataManager {
     private static String link = "jdbc:mysql://82.165.125.77:3306/ranks?useSSL=false";
 
     public static String getRank(Player p) {
-        Connection con;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(link, Username, Password);
+            Connection con = DriverManager.getConnection(link, Username, Password);
             Statement stmt = con.createStatement();
             String sql = "SELECT * FROM groups WHERE username='" + p.getName() + "'";
             ResultSet rs = stmt.executeQuery(sql);
