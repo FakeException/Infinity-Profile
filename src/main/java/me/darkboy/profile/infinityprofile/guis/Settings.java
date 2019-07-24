@@ -1,10 +1,12 @@
 package me.darkboy.profile.infinityprofile.guis;
 
+import me.darkboy.profile.infinityprofile.InfinityProfile;
 import me.darkboy.profile.infinityprofile.api.inventory.ClickableItem;
 import me.darkboy.profile.infinityprofile.api.inventory.InfinityInventory;
 import me.darkboy.profile.infinityprofile.api.inventory.content.InventoryContents;
 import me.darkboy.profile.infinityprofile.api.inventory.content.InventoryProvider;
 import me.darkboy.profile.infinityprofile.api.util.ItemBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -38,10 +40,14 @@ public class Settings implements InventoryProvider {
         if(!hide.contains(player)) {
             contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.INK_SACK, 1, (byte) 8).setDisplayName("§aVisibility Disabled").build(), e -> {
                 hide.add(player);
+
+                Bukkit.getOnlinePlayers().forEach(p -> player.hidePlayer(InfinityProfile.getInstance(), p));
             }));
         } else {
             contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.INK_SACK, 1, (byte) 10).setDisplayName("§aVisibility Enabled").build(), e -> {
                 hide.remove(player);
+
+                Bukkit.getOnlinePlayers().forEach(p -> player.showPlayer(InfinityProfile.getInstance(), p));
             }));
         }
 
