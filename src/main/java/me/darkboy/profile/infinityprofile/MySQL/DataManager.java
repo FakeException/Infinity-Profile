@@ -6,9 +6,9 @@ import java.sql.*;
 
 public class DataManager {
 
-    private static String Username = "root";
-    private static String Password = "123567wersdF$";
-    private static String link = "jdbc:mysql://82.165.125.77:3306/ranks?useSSL=false";
+    private static String Username = "";
+    private static String Password = "";
+    private static String link = "";
 
     public static String getRank(Player p) {
         String rank = "";
